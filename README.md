@@ -516,12 +516,36 @@ Understanding when, how and what to test proved to be the most challenging part.
 
 ### <a id="Information-Security-Requirements"></a>Information Security Requirements
 _Discuss and analyse requirements related to information system security._
-    * Payment Security?
-    * Customer Data Protection?
-    * Disputes - Reviews/Comments
-    * Lost/Damaged Items
 
-Make this a more general analysis of the ethics behind handling user data.
+Information security pertains to protecting information (data) and information systems from unauthorized access, use, disclosure, disruption, modification, or destruction.
+
+Information Security management is a process of defining the security controls in order to protect the information assets.
+
+The following principles must be applied when implementing and maintaining and information systems:
+
+- Accountability
+- Trust 
+- Data management
+- Isolation 
+- Change 
+- Compliance 
+
+Some aspects of information security include: 
+
+Passwords and authentication systems, such as Devise.
+
+System Configuration
+
+HTTPS and HSTS for secure connections. 
+
+Encryption of sensitive data communication.
+
+Separate hosting infrastructure - for storing data, decrypting (keys), and transmitting card numbers, decryption keys etc. 
+ 
+Firewalls -  are utilized to restrict access to systems from external networks and between systems internally. By default, all access is denied and only explicitly allowed ports and protocols are allowed based on business need
+
+
+Third party vulnerability reporting 
 
 ### <a id="Information-Security-Methodologies"></a>Information Security Methodologies
 _Discuss methods you will use to protect information and data._
