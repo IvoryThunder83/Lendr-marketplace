@@ -350,9 +350,64 @@ _Discuss the database relations to be implemented._
 * ERD - describe model associations and why.
 * This is more regarding why we need a join table in certain instances in your app, why we need a foreign keys in different tables, think about the stuff we did when we first started sql
 
-_Describe your project’s models in terms of the relationships (Active Record Associations) they have with each other._
-* Associations - e.g. has many, has one, etc???
-* Think about rails active record associations, has_many, has_one, belongs_to
+Describe your project’s models in terms of the relationships Category model
+
+Our Models, their relationships and foreign keys:
+
+Category model
+
+has_many :items 
+
+Foreign Keys: item_id 
+
+Each category can have many items.  
+
+Comment model
+
+belongs_to :item 
+belongs_to :user 
+
+Foreign Keys: user_id, transaction_id
+
+validates :review
+validates :rating
+
+A comment belongs to a single user, who when making a comment is doing so in relation to a transaction involving the associated, single item. A user must be involved with a transaction in order to comment. 
+
+Item model
+
+belongs_to :user 
+belongs_to :category 
+has_many :transactions
+has_many_attached :images 
+has_many :comments 
+
+Foreign Keys: user_id, transaction_id, category_id
+
+validates :name
+validates :category 
+validates :description
+validates : price 
+
+An item belonged to one owner and one category, each with their own user. A single item can only have one owner but could be involved in many transactions, with many borrowers over time therefore it would have many comments. We also wanted to have multiple images for each item, so it had many attached images. 
+
+Transaction model 
+
+belongs_to :item 
+has_many :comments 
+belongs_to :borrower
+belongs_to :owner
+Foreign Keys: item_id, user_id 
+
+For each instance of a transaction there can only be one owner and one borrower for an item. 
+
+User model 
+has_many  :items 
+has_many :transactions
+has_many :comments 
+Foreign Keys: item_id, comment_id 
+
+A user has the ability to borrow and a lend many items, be involved in many transactions and be able to leave many comments. 
 
 #### <a id="Entity-Relationship-Diagram"></a>Entity Relationship Diagram
 _Provide your database schema design._
