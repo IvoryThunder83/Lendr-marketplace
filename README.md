@@ -525,14 +525,17 @@ Make this a more general analysis of the ethics behind handling user data.
 
 ### <a id="Information-Security-Methodologies"></a>Information Security Methodologies
 _Discuss methods you will use to protect information and data._
-    * Encryption - hashing passwords automatically.
-    * Stripe - what manages and protects all credit card information
-    * Pundit - controls authorisations and what users can see.
-    * Timeouts - automatically logging users out after a period of inactivity??
-https://www.oaic.gov.au/agencies-and-organisations/guides/guide-to-securing-personal-information
-    * Encryption - hashing passwords automatically
-    * Stripe - what manages and protects all credit card information
-    * Pundit - controls authorisations and what users can see
+ 
+ 
+For database authentication we used the DEVISE GEM. 
+
+We deployed our application using HEROKU. One feature of Heroku is it applies security best practices and manages platform security by applying security controls at every layer from physical to application, isolating customer applications and data, and its ability to rapidly deploy security updates without customer interaction or service interruption. 
+
+Our applications most sensitive data type involves processing payments. For this we used Stripe. Stripe is certified to PCI Service Provider Level 1, the most rigorous llevel or certification available in the payments industry. Stripe’s infrastructure for storing, decrypting, and transmitting card numbers runs in separate hosting infrastructure, and doesn’t share any credentials with Stripe’s primary services (API, website, etc.). Stripe has two PGP keys to encrypt your communications with Stripe.
+
+
+
+
 
 ### <a id="User-Data-Management"></a>User Data Management
 Research what your legal obligations are in relation to handling user data.
