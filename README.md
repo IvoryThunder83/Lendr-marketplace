@@ -457,12 +457,23 @@ https://www.oaic.gov.au/agencies-and-organisations/guides/guide-to-securing-pers
     * Pundit - controls authorisations and what users can see
 
 ### <a id="User-Data-Management"></a>User Data Management
-_Research what your legal obligations are in relation to handling user data._
-* Cookies - disclaimers for use of cookies to track user data.
-* Privacy - using customer data for data analytics, marketing purposes.
-https://www.oaic.gov.au/agencies-and-organisations/faqs-for-agencies-orgs/businesses/
-* Terms of use
-* Posting policy 
+Research what your legal obligations are in relation to handling user data.
+
+Exercise the following principles of data collection:
+
+Notice: users should be given notice when their data is being collected
+Purpose: data should only be used for what you say you will use it for
+Consent: user data should not be shared without your users’ consent
+Security: collected data should be kept secure
+Disclosure: users should be informed about who is collecting their data
+Access: users should be allowed to access their data and make corrections to any inaccurate data
+Accountability: users should have a method available to them to hold data collectors accountable for not following the above principles
+Make sure that your application has in place a Privacy Policy and Terms and Conditions, this should be displayed as a standalone document and must detail what kind of information you collect, what you will do with that information and who it will be shared with (if applicable). If you are collecting user data through a mobile app, you can use a pop up when they first open the app which asks them to agree to your Privacy Policy. An effective way to display your Privacy Policy is called clickwrap. Clickwrap is where your users actually have to click “I Agree” or indicate their agreement directly, rather than just being assumed to agree.
+
+Secure the connection between your application and a user’s browser with SSL encryption.  
+
+When you receive data through the form make sure that anything that looks like it could be computer code is treated as plain ‘text’ rather than computer code by your server. That way it won’t be run as code on your server and won’t be able to take data from your database.
+
 
 ## <a id="Minimum-Viable-Product"></a>Minimum Viable Product
 ### <a id="Challenges"></a>Challenges
