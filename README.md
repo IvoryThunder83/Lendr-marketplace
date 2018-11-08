@@ -146,10 +146,151 @@ Describe the tech stack used for the application
 * HTML - semantic.
 
 ### <a id="Architecture"></a>Architecture
-_Describe the architecture of your App._
+Describe the architecture of your App.
 
-* Is this describing MVC in relation to our map? i.e. the MVC model diagram Matt drew?
-* Yes go into detail about MVC, don’t describe any model associations yet
+Ruby on Rails Server
+
+We built our app with the Ruby on Rails web-development framework that utilises the Ruby language and follows the Model-View-Controller architectural pattern. 
+
+It was coded following the rule of convention over configuration, the software design paradigm utilised by software frameworks that allowed us to decrease the number of decisions (as it made them for us) that developers using the framework 
+are required to make without necessarily losing flexibility.
+
+Models
+
+	Categories 
+	- name :string
+	- created_at :datetime
+	- updated_at :datetime
+
+           Comments
+	- review :text
+           - rating :integer
+	- role :string
+	- created_at :datetime
+	- updated_at :datetime
+	- item_id :bigint
+           - user_id :bigint
+	- [item_id], :index, name: index_comments_on_item_id
+	- [user_id], :index, name: index_comments_on_user_id
+
+
+	Items 
+	- name :string
+	- description :text
+	- terms :text 
+ 	- price :integer
+	- street :string 
+	- suburb :string 
+	- state :state
+	- postcode :string 
+	- created_at :datetime
+	- updated_at :datetime 
+	- item_id :bigint
+	- category_id :bigint
+    - next_available :datetime
+	- [category_id], :index, name: index_items_on_category_id
+	- [user_id], :index, name: index_items_on_user_id
+
+	
+Transactions
+	- start_date :date
+           - end_date :date
+           - total_cost :integer 
+           - item_name :string 
+	- created_at :datetime
+	- updated_at :datetime 
+   	- item_id :bigint  
+	- owner_id :bigint 
+	- borrower_id :bigint 
+           - [borrower_id], :index, name: index_transactins_on_borrower_id
+	- [item_id], :index, name: index_transactions_on_itme_id
+	- [owner_id], :index, name: index_transactions_on_owner_id
+
+	User
+-	ID (Primary Key) :integer   
+-	first_name :string
+-	last_name :string
+-	email :string
+-	phone :string
+-	birthdate :date
+-	created_at :datetime
+-	updated_at :datetime 
+-	reset_password_token :string
+-	reset_password_sent_at :datetime
+-	encrypted_password :string
+-	[email], :index,  name: index_users_on_email 
+-	[reset_password_token], :index, name: index_users_on_reset_password_token 
+
+Foreign Keys
+
+- comments, items
+- comments, users
+- items, categories
+- items, users 
+- transactions, items
+- transactions, users,  column: borrower_id
+- transactions, users, column: owner_id
+
+
+Controllers
+
+Users Controllers (Generated with Devise)
+-    (Confirmations Controller) 
+-    (Omniauth Callbacks Controller)
+-    (Passwords Controller)
+-    (Registrations Controller)
+-    (Sessions Controller)
+-    (Unlocks Controller)
+
+
+Application Controllers 
+-	Index
+-	Show
+
+Categories Controllers 
+-    index 
+-	Show 
+
+Charges Controllers. (Stripe) 
+-	New
+-	Create
+-	Item Params
+
+Comments Controllers 
+-	Index 
+-	Show
+-	New
+-	Edit
+-	Create
+-	Update
+-	Destroy
+-	Set Comment 
+-	Comment Params
+
+Items Controllers 
+-	Index 
+-	Show
+-	New
+-	Edit
+-	Create
+-	Update
+-	Destroy
+-	Set Item
+-	Item Params
+
+Pages Conrollers 
+-	Welcome
+-	Dashboard
+
+Transactions Controllers 
+-	Index 
+-	Show
+-	New
+-	Create
+-	Set Transaction
+-	Transaction Params
+
+
 
 ### <a id="Components"></a>Components
 _Explain the different high-level components (abstractions) in your App._
@@ -162,10 +303,18 @@ Instances of different high-level components (abstractions) used in our project 
 * As the model component in the Model-View-Controller architecture of Rails, the ActiveRecord module is a form of database extraction, building into the Rails framework a database adapter to connect to SQLite, MySQL and PostgreSQL, so that it isn't dependent upon any one database, and can be invoked as needed. 
 
 ### <a id="Third-Party-Services"></a>Third Party Services
-_Detail any third party services that your App will use._
-* APIs?
-* Heroku?
-* AWS?
+Detail any third-party services that your App will use.
+
+Amazon Web Services S3 (Simple Storage Storage). 
+We used an Amazon Simple Storage Service (AmazonS3) bucket for our image hosting. We chose S3 due to its reputation for being a low-cost, secure, scalable, high-speed and easy-to-use, web-based, cloud storage service.
+
+Stripe. 
+Our application requires an online payment system. We will use Stripe as our payment processing platform to accept credit card payments. We choose Stripe as it is reputable - trusted globally -  and provides the technical, fraud prevention, and banking infrastructure required for our applications needs.  When users enter their credit card data into our payment forms, Stripe makes sure that data is never sent to our servers, instead it is sent directly to Stripe, meaning a breach of our server’s won’t result in any stolen credit card data. 
+
+Mailgun.  
+We configured our application to send mail via Mailgun and not our own servers. Mailgun is a third-party service that provides the infrastructure that enables our application to send email to users, such as account activation emails and password reset emails. 
+There are a few reasons we chose to use this service. Firstly, cloud server IP addresses can end up on spam blacklists. This can prevent mail from making it to the recipient. Since the mail is coming from Mailgun, it is much more likely to reach the intended recipient. Additionally, by taking the burden of sending and receiving email away from our application servers, Mailgun can actually reduce the amount of computational power our application needs to be successful. 
+
 
 ### <a id="Database"></a>Database
 #### <a id="Database-Justification"></a>Database Justification
