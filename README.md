@@ -347,8 +347,31 @@ _Describe (in general terms) the data structure of marketplace apps that are sim
 
 #### <a id="Database-Relations"></a>Database Relations
 _Discuss the database relations to be implemented._
-* ERD - describe model associations and why.
-* This is more regarding why we need a join table in certain instances in your app, why we need a foreign keys in different tables, think about the stuff we did when we first started sql
+We utilised Active Record associations in our application as it optimised our workflow – making it much simpler to be able to form various operations on our database records, by simply leveraging the functionality of AR by telling rails there is a connection between two models.  
+
+We used migrations to add :references to define our foreign keys. 
+
+For eg. Rails g model Comment user:references
+
+By doing so, when generating migration, it automatically added:
+
+belongs_to :user      
+
+to our Comment model. 
+
+We repeated this action with all our models. See below, for our models, relationships and foreign keys. 
+
+Our code also utilised the has_many association. These were useful for setup up “shortcuts” through nesting. 
+
+For eg. 
+
+class User
+
+    has_many :comments 
+
+end 
+
+
 
 Describe your project’s models in terms of the relationships Category model
 
