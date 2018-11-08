@@ -140,10 +140,19 @@ Other appealing aspects of Heroku included:
 ### <a id="Software"></a>Software
 _Identify and describe the software to be used in your App._
 Describe the tech stack used for the application
-* Ruby on Rails - framework.
-* Ruby - programming language.
-* CSS (SASS) - styling.
-* HTML - semantic.
+
+Ruby on Rails – Our application framework.
+Ruby  - Programming Language. 
+HTML – Mark-up language for creating our views.
+CSS (SASS) – Style sheet language used for styling our application. 
+Heroku PostgreSQL – our managed SQL database service provided directly 
+by Heroku. 
+Devise – Authentication gem for our users.
+DotEnv Gem - To load environment variables on startup of your application
+Stripe – API suite for processing payments
+AWS3 – Cloud-based storage solution for housing our images.
+
+ 
 
 ### <a id="Architecture"></a>Architecture
 Describe the architecture of your App.
@@ -340,10 +349,13 @@ _Identify and describe the production database setup (i.e. postgres instance)._
 
 #### <a id="Market-Research"></a>Market Research
 _Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb)._
-* Market research: Things version of Airbnb, similar rental model (difference: for objects not accommodation)
-* Ziilch (difference: users are giving away items for free)
-* Gumtree, eBay (difference: users are buying/seller goods for ownership not rental)
-* Fashion Rentals/Rent Furniture, etc. (difference: companies own inventory)
+
+Our application is quite similar to AirBnb, except we cater to "things" rather than dwellings. 
+
+Below is the ERD for Airbnb. 
+
+https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/289/AirBnb_DB_diagramm.jpg
+
 
 #### <a id="Database-Relations"></a>Database Relations
 _Discuss the database relations to be implemented._
